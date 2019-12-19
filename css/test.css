@@ -1,0 +1,12 @@
+* {
+    padding: 0px;
+}
+
+:global .border-red {
+    border: 1px solid red;
+}
+:local .div1 {
+    composes: mydiv from './test2.css';
+    background-color: red;
+    display: flex;
+}

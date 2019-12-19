@@ -1,0 +1,17 @@
+{
+ "presets": [
+    [
+      '@babel/preset-env',
+      {
+        "targets": { // 以浏览器为衡量标准，占有率大于百分之一，兼容最后两个版本，不需要兼容IE8以下的版本
+//          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+          // node: '10.16.0' // 以 node为目标 es6的语法不会被编译
+          // chrome: '59' // 也不会被编译
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    '@babel/transform-runtime'
+  ]
+}
