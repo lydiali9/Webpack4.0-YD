@@ -1,5 +1,8 @@
 const extracss = require('extract-text-webpack-plugin'); // 安装时要安装extract-text-webpack-plugin@next 才支持webapck4.0版本 分离css文件，打包为app2.mini.css
 const minicss = require('mini-css-extract-plugin'); // 此插件功能同上，只是可以在打包文件名称中假如hash，如上不行
+const htmlwebpackPlugin = require('html-webpack-plugin'); // 此插件抽离html文件
+
+
 module.exports = {
     mode: 'development', // production
     // entry: './app.js',
@@ -150,6 +153,16 @@ module.exports = {
         })*/
         new minicss({
             filename: "[name].mini.css"
+        }),
+        new htmlwebpackPlugin({ // 这种方式讲所有的入口文件app.js和app2.js都引入进来了 所以要用chunks
+            template: "index.html",
+            filename: "index.html",
+            chunks: ['app']
+        }),
+        new htmlwebpackPlugin({
+            template: 'index.html',
+            filename: 'index2.html',
+            chunks: ['app2']
         })
     ]
 }
